@@ -23,7 +23,10 @@
   <img src="ie_dead.png" alt="Ding Dong IE8 is Dead"/>
 
   <h2>So what features can we now use without fear?!</h2>
-  <p>I filtered all the feature data <sup>1</sup> down to just the ones that are supported on IE11, Chrome 40, Firefox 35, Safari 8, iOS Safari 8.1, Android Browser 37, Android Chrome 40. Then I filtered again by features that were previously <em>unsupported</em> on IE8. The following list represents features we couldn't use before, but can use now<sup>2</sup>.</p>
+  <p>I filtered all the feature data <sup>1</sup> down to just the ones that are supported on IE11, Chrome 40,
+    Firefox 35, Safari 8, iOS Safari 8.1, Android Browser 37, Android Chrome 40. Then I filtered again by features
+    that were previously <em>unsupported</em> on IE8. The following list represents features we couldn't use before,
+    but can use now<sup>2</sup>.  <p class="feature-comment">My personal comments are in yellow</p></p>
   <small><sup>1</sup> Data from <a href="http://www.caniuse.com">caniuse.com</a></small><br>
   <small><sup>2</sup> Actually we could do a good amount of these with graceful fallbacks, polyfills, and the help of frameworks, but it's still exciting damnit!</small>
 
@@ -34,6 +37,7 @@
       <h2 ng-if="feature.firstInGroup">{{feature.categories[0]}}</h2>
       <h3 class="feature-title"><a ng-href="{{feature.spec}}">{{feature.title}}</a> ({{feature.categories[0]}})</h3>
       <p class="feature-desc">{{feature.description}}</p>
+      <p class="feature-comment" ng-if="main.comment(feature)" ng-bind-html="main.comment(feature).text"></p>
       <p class="feature-links">Links:
         <span class="feature-link-span" ng-repeat="link in feature.links">
           <a class="feature-link" ng-href="link.url">{{link.title}}</a>

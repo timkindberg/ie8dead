@@ -13,12 +13,24 @@
   <link rel="stylesheet" href="bower_components/html5-boilerplate/css/main.css">
   <link rel="stylesheet" href="app.css">
   <script src="bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>
-</head>
-<body ng-controller="MainController as main">
-
-  {{hello}}
-
   <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/underscore/underscore.js"></script>
   <script src="app.js"></script>
+</head>
+<body ng-controller="mainController as main" ng-cloak>
+  <ul class="feature-list">
+    <li class="feature-row" ng-repeat="feature in main.json | supportedByAllBrowsers
+                                        | ieSupportImproved
+                                        | groupBy:'categories[0]':'title'">
+      <h2 ng-if="feature.firstInGroup">{{feature.categories[0]}}</h2>
+      <h3 class="feature-title"><a ng-href="{{feature.spec}}">{{feature.title}}</a> ({{feature.categories[0]}})</h3>
+      <p class="feature-desc">{{feature.description}}</p>
+      <p class="feature-links">Links:
+        <span class="feature-link-span" ng-repeat="link in feature.links">
+          <a class="feature-link" ng-href="link.url">{{link.title}}</a>
+        </span>
+      </p>
+    </li>
+  </ul>
 </body>
 </html>
